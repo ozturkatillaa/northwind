@@ -1,0 +1,17 @@
+<ul class="list-group">
+  <li [class]=getAllCategoryClass() routerLink="/products">Tum Urunler</li>
+  <li (click)="setCurrentCategory(category)"
+  routerLink="/products/category/{{category.categoryId}}"
+  *ngFor="let category of categories"
+  [class]=getCurrentCategoryClass(category)>{{category.categoryName}}</li>
+  <!-- normlde burası class = "list-group-item active" ustteki seçilen kategoriyi mavi yap-->
+</ul>
+
+<h5 *ngIf="currentCategory" >{{currentCategory.categoryName}}</h5> seçtiniz
+
+<!-- kk
+ routerLink="/products/category/{{category.categoryId}}" bunu tetikleyen yani bastığımza gitmesini
+ sağlayan app routing module, categoryid yi algılıyor, oradaki karşılığı
+   {path:"products/category/:categoryId", component:ProductComponent}
+   buradaki yer de
+-->
