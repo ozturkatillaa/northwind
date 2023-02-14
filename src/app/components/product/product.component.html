@@ -29,5 +29,7 @@
     <td >{{product.unitPrice |vatAdded:18 | currency}}</td>
     <td >{{product.unitsInStock}}</td>
     <td><button (click)="addToCart(product)" type="button" class="btn btn-success btn-xs">Sepete Ekle</button></td>
+    <button (click)="updatetoCart(product)"  class="btn btn-fill btn-primary" >Guncelle</button>
+
   </tr>
 </table>

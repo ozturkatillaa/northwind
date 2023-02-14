@@ -4,6 +4,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { LoginGuard } from './components/guards/login.guard';
 import { LoginComponent } from './components/login/login.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
+import { ProductUpdateComponent } from './components/product-update/product-update.component';
 import { ProductComponent } from './components/product/product.component';
 
 const routes: Routes = [
@@ -12,7 +13,10 @@ const routes: Routes = [
   {path:"products", component:ProductComponent},
   {path:"products/category/:categoryId", component:ProductComponent},
   {path:"products/add", component:ProductAddComponent, canActivate:[LoginGuard]},
-  {path:"login", component:LoginComponent}
+  {path:"login", component:LoginComponent},
+  {path:"products/update",component:ProductUpdateComponent},
+  // {path:"products/update/:id",component:ProductUpdateComponent}
+  // bu sonradankaldır
 ];
 
 @NgModule({

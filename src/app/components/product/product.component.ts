@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
@@ -29,8 +29,12 @@ export class ProductComponent implements OnInit {
   // };
 
   //dependency injection için constractır
-  constructor(private productService:ProductService,
-    private activatedRoute:ActivatedRoute, private toastrService:ToastrService, private cartService:CartService) { }
+  constructor(
+    private productService:ProductService,
+    private activatedRoute:ActivatedRoute,
+    private toastrService:ToastrService,
+    private cartService:CartService,
+    private router:Router) { }
 
   ngOnInit(): void {
     // console.log("init çalıştı");
@@ -67,6 +71,11 @@ export class ProductComponent implements OnInit {
       this.toastrService.success("Sepete Eklendi",product.productName)
       this.cartService.addToCart(product)
     }
+  }
+
+  updatetoCart(product:Product){
+    console.log(product);
+    this.router.navigate(["products/update"])
   }
 }
 
