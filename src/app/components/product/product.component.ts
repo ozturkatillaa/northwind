@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/models/product';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 
 
@@ -15,6 +17,9 @@ export class ProductComponent implements OnInit {
 
   products: Product[] = []
   dataLoadded=false;
+  filterText="";
+  // forms module filter için gerekli app module tarafına ekledik
+  // [(ngModel)]="filterText"  olarak producthtml de ekli
 
 
   // productResponseModel:ProductResponseModel={
@@ -24,7 +29,8 @@ export class ProductComponent implements OnInit {
   // };
 
   //dependency injection için constractır
-  constructor(private productService:ProductService, private activatedRoute:ActivatedRoute) { }
+  constructor(private productService:ProductService,
+    private activatedRoute:ActivatedRoute, private toastrService:ToastrService, private cartService:CartService) { }
 
   ngOnInit(): void {
     // console.log("init çalıştı");
@@ -51,6 +57,16 @@ export class ProductComponent implements OnInit {
       this.dataLoadded=true;
     });
 
+  }
+
+  addToCart(product:Product){
+    if(product.productId===1){
+      this.toastrService.error("Bu urun sepete elenemez")
+    }
+    else{
+      this.toastrService.success("Sepete Eklendi",product.productName)
+      this.cartService.addToCart(product)
+    }
   }
 }
 
