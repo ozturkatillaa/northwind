@@ -18,6 +18,8 @@ export class ProductComponent implements OnInit {
   products: Product[] = []
   dataLoadded=false;
   filterText="";
+  selectedProduct:Product;
+  // selectedProduct:Product;
   // forms module filter için gerekli app module tarafına ekledik
   // [(ngModel)]="filterText"  olarak producthtml de ekli
 
@@ -48,6 +50,10 @@ export class ProductComponent implements OnInit {
     })
   }
 
+  onSelectedProduct(product:Product){
+    this.selectedProduct=product;
+  }
+
   getProducts() {
     this.productService.getProducts().subscribe(resonse=>{
       this.products=resonse.data
@@ -55,6 +61,7 @@ export class ProductComponent implements OnInit {
       //subscribe senkon hale getirir, kod sıraı halde çalışır.alta eklersek a senkron çalışır önce alttaki metod çalışı sonra burası çalışır.
     });
   }
+
   getProductsByCategory(categoryId:number) {
     this.productService.getProductsByCategory(categoryId).subscribe(resonse=>{
       this.products=resonse.data
@@ -73,10 +80,14 @@ export class ProductComponent implements OnInit {
     }
   }
 
-  updatetoCart(product:Product){
-    console.log(product);
-    this.router.navigate(["products/update"])
-  }
+  // updatetoCart(product:Product){
+  //   console.log(product);
+  //   this.router.navigate(["products/update"])
+  // }
+
+  // onSelectedProduct(product:Product){
+  //   this.selectedProduct=product;
+  // }
 }
 
 

@@ -15,7 +15,7 @@ const routes: Routes = [
   {path:"products/add", component:ProductAddComponent, canActivate:[LoginGuard]},
   {path:"login", component:LoginComponent},
   {path:"products/update",component:ProductUpdateComponent},
-  // {path:"products/update/:id",component:ProductUpdateComponent}
+  {path:"products/update/:productId",component:ProductUpdateComponent}
   // bu sonradankaldır
 ];
 

@@ -28,8 +28,12 @@
     <td >{{product.unitPrice | currency}}</td>
     <td >{{product.unitPrice |vatAdded:18 | currency}}</td>
     <td >{{product.unitsInStock}}</td>
-    <td><button (click)="addToCart(product)" type="button" class="btn btn-success btn-xs">Sepete Ekle</button></td>
-    <button (click)="updatetoCart(product)"  class="btn btn-fill btn-primary" >Guncelle</button>
-
+    <button (click)="addToCart(product)" type="button" class="btn btn-success btn-xs">Sepete Ekle</button>
+    <button (click)="onSelectedProduct(product)"  [routerLink]="['/products/update/',product.productId]"  class="btn btn-fill btn-primary" >Guncelle</button>
+    <!-- (click)="updatetoCart(product)"  routerLink="/products/update/{{product.productId}}" -->
   </tr>
 </table>
+<div class="card-footer">
+  <button class="btn btn-fill btn-primary">Guncelle</button>
+</div>
+<!-- <app-product-update [product]="selectedProduct"></app-product-update> -->
