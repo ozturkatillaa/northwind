@@ -32,7 +32,7 @@ export class ProductUpdateComponent implements OnInit {
         productName:new FormControl(result.data["productName"], Validators.required),
         categoryId:new FormControl(result.data["categoryId"], Validators.required),
         unitsInStock:new FormControl(result.data["unitsInStock"], Validators.required),
-        unitPrice:new FormControl(result.data["unitPrice"]-1, Validators.required),
+        unitPrice:new FormControl(result.data["unitPrice"], Validators.required),
       });
     });
   }
