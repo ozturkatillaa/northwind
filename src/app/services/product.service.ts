@@ -46,6 +46,9 @@ export class ProductService {
     let newPath=this.apiUrl+'products/getbyid?id='+productId;
     return this.httpClient.get<ListResponseModel<Product>>(newPath),data;
   }
+  delete(product:Product): Observable<ResponseModel>{
+    let newPath  = this.apiUrl + "products/delete"
+    return this.httpClient.post<ResponseModel>(newPath, product)}
 
 
 }

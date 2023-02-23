@@ -4,6 +4,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { LoginGuard } from './components/guards/login.guard';
 import { LoginComponent } from './components/login/login.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
+import { ProductDeleteComponent } from './components/product-delete/product-delete.component';
 import { ProductUpdateComponent } from './components/product-update/product-update.component';
 import { ProductComponent } from './components/product/product.component';
 
@@ -15,7 +16,9 @@ const routes: Routes = [
   {path:"products/add", component:ProductAddComponent, canActivate:[LoginGuard]},
   {path:"login", component:LoginComponent},
   {path:"products/update",component:ProductUpdateComponent},
-  {path:"products/update/:productId",component:ProductUpdateComponent}
+  {path:"products/delete",component:ProductDeleteComponent},
+  {path:"products/update/:productId",component:ProductUpdateComponent, canActivate:[LoginGuard]},
+  {path:"products/delete/:productId",component:ProductDeleteComponent, canActivate:[LoginGuard]}
   // bu sonradankaldır
 ];
 
